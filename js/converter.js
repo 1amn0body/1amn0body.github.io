@@ -15,16 +15,16 @@ marked.setOptions({
 });
 
 class ConvertFiles {
-  inputPath = "./md/";
-  outputPath = "./docs/";
-  templatePath = "./template/";
-
-  fileList = this.listFiles(this.inputPath, [".md"]);
-
   navItems = {};
   appendNav = [];
 
-  constructor() {
+  constructor(inputPath = "./md/", outputPath = "./docs/", templatePath = "./template/") {
+    this.inputPath = inputPath;
+    this.outputPath = outputPath;
+    this.templatePath = templatePath;
+
+    this.fileList = this.listFiles(this.inputPath, [".md"]);
+
     this.start();
   }
 
