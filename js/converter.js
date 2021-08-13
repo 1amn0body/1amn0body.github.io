@@ -18,7 +18,11 @@ class ConvertFiles {
   navItems = {};
   appendNav = [];
 
-  constructor(inputPath = "./md/", outputPath = "./docs/", templatePath = "./template/") {
+  constructor(
+    inputPath = "./md/",
+    outputPath = "./docs/",
+    templatePath = "./template/"
+  ) {
     this.inputPath = inputPath;
     this.outputPath = outputPath;
     this.templatePath = templatePath;
@@ -144,10 +148,33 @@ class ConvertFiles {
       let dom = cheerio.load(template);
 
       const md = "data" in props ? marked(props["data"]) : "";
-      const title = "title" in props ? props["title"] : "";
+
+      let fileTitle = this.replaceExtension(props["file"], "");
+      fileTitle = fileTitle[0]
+        .toUpperCase()
+        .concat(fileTitle.length > 1 ? fileTitle.substring(1) : "");
+
+      const title = "title" in props ? props["title"] : fileTitle;
       const sitename = "sitename" in props ? " | " + props["sitename"] : "";
 
       dom("head").append("<title>" + title + sitename + "</title>");
+
+      if (dom("body").find("header").length) {
+        dom("header").append("<h1>" + title + "</h1>");
+      } else {
+        const headerElement = "<header><h1>" + title + "</h1></header>";
+        const body = dom("body");
+
+        if (body.find("nav").length) {
+          dom("nav").after(headerElement);
+        } else if (body.find("main").length) {
+          dom("main").before(headerElement);
+        } else if (body.find("footer").length) {
+          dom("footer").before(headerElement);
+        } else {
+          dom("body").append(headerElement);
+        }
+      }
 
       if (dom("body").find("main").length) {
         dom("main").append(md);
@@ -155,19 +182,19 @@ class ConvertFiles {
         const mainElement = "<main>" + md + "</main>";
         const body = dom("body");
 
-        if (body.find("header")) {
+        if (body.find("header").length) {
           dom("header").after(mainElement);
-        } else if (body.find("nav")) {
-          dom("header").after(mainElement);
-        } else if (body.find("footer")) {
-          dom("header").before(mainElement);
+        } else if (body.find("nav").length) {
+          dom("nav").after(mainElement);
+        } else if (body.find("footer").length) {
+          dom("footer").before(mainElement);
         } else {
           dom("body").append(mainElement);
         }
       }
 
       if ("headElements" in props) {
-        props["headElements"].forEach(element => {
+        props["headElements"].forEach((element) => {
           dom("head").append(element);
         });
       }
@@ -177,10 +204,7 @@ class ConvertFiles {
       const inNav = "inNav" in props ? props["inNav"] : false;
       const hasNav = "hasNav" in props ? props["hasNav"] : false;
 
-      if (inNav)
-        this.navItems[
-          title != "" ? title : this.replaceExtension(props["file"], "")
-        ] = outputName;
+      if (inNav) this.navItems[title] = outputName;
       if (hasNav) this.appendNav.push(outputName);
 
       this.saveOutput(outputName, dom.html());
