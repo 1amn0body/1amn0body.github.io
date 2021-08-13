@@ -1,0 +1,25 @@
+{
+  "name": "MarkdownConverter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/converter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node js/converter.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1amn0body/MarkdownConverter.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/1amn0body/MarkdownConverter/issues"
+  },
+  "homepage": "https://github.com/1amn0body/MarkdownConverter#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "highlight.js": "^11.2.0",
+    "marked": "^2.1.3"
+  }
+}
