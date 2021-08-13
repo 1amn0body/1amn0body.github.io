@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+@import url("../highlight/github-dark.min.css");
+@media screen {
+  html {
+    background-color: #0d1117;
+    font-family: "Dosis", serif;
+    color: #c9d1d9;
+    -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+            hyphens: auto;
+  }
+}

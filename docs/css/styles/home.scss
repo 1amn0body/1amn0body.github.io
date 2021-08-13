@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis&display=swap");
+@import url("../highlight/github-dark.min.css");
+
+@import "scss/colors.scss";
+
+@media screen {
+    html {
+        background-color: $background;
+        font-family: "Dosis", serif;
+        color: $text;
+        hyphens: auto;
+    }
+
+    @media (max-width: 768px) {
+        @import "scss/home_screen_media.scss";
+    }
+    @media (min-width: 769px) {
+        @import "scss/home_screen.scss";
+    }
+}

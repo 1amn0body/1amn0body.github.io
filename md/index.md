@@ -2,9 +2,9 @@
     "convert": true,
     "inNav": true,
     "hasNav": true,
-    "template": "main.html",
-    "title": "Title",
-    "sitename": "Site Name"
+    "template": "home.html",
+    "title": "Home",
+    "sitename": "1amn0body"
 }
 
 # Home
