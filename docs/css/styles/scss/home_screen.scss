@@ -1,0 +1,24 @@
+@import "colors";
+@import "sizes";
+
+body {
+    grid-template-columns: 15fr 85fr;
+    grid-template-rows: 0fr;
+}
+
+header,
+main,
+footer {
+    grid-column-start: 2;
+    grid-column-end: 2;
+
+    margin: 0 $gap;
+}
+
+nav {
+    grid-row-start: 1;
+    grid-row-end: 4;
+
+    min-width: 200px;
+    padding: $gap 0;
+}

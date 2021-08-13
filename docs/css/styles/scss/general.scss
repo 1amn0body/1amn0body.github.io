@@ -1,0 +1,36 @@
+@import "colors";
+@import "sizes";
+@import "mixins";
+
+html {
+    background-color: $background;
+    font-family: "Dosis", serif;
+    color: $text;
+    hyphens: auto;
+
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    height: 100%;
+
+    display: grid;
+}
+
+header,
+main,
+footer {
+    a {
+        @include links($link, $link-active, $link-visited);
+        @include links_decor(text-decoration, none, underline, none);
+    }
+}
+
+nav {
+    background-color: $nav-background;
+}

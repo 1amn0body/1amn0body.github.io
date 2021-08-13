@@ -4,12 +4,7 @@
 @import "scss/colors.scss";
 
 @media screen {
-    html {
-        background-color: $background;
-        font-family: "Dosis", serif;
-        color: $text;
-        hyphens: auto;
-    }
+    @import "scss/general.scss";
 
     @media (max-width: 768px) {
         @import "scss/home_screen_media.scss";

@@ -1,0 +1,33 @@
+@mixin links($color, $active, $visited) {
+    color: $color;
+
+    &:visited {
+        color: $visited;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $active;
+    }
+}
+
+@mixin links_decor($rule, $decor, $active, $visited) {
+    #{$rule}: #{$decor};
+
+    &:visited {
+        #{$rule}: #{$visited};
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        #{$rule}: #{$active};
+    }
+}
+
+@mixin vendorPrefix($attribute, $value) {
+    @each $prefix in -webkit-, -moz-, -ms-, -o-, "" {
+        #{$prefix}#{$attribute}: $value;
+    }
+}
