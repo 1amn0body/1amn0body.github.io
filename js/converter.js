@@ -149,7 +149,7 @@ class ConvertFiles {
 
       const md = "data" in props ? marked(props["data"]) : "";
 
-      let fileTitle = this.replaceExtension(props["file"], "");
+      let fileTitle = this.replaceExtension(path.basename(props["file"]), "");
       fileTitle = fileTitle[0]
         .toUpperCase()
         .concat(fileTitle.length > 1 ? fileTitle.substring(1) : "");
@@ -212,6 +212,8 @@ class ConvertFiles {
   }
 
   generateNav() {
+    //TODO generate based of directory structure, use path.dirname(filepath) ?
+
     let nav = cheerio.load("<ul></ul>", {}, false);
 
     for (const key in this.navItems) {
