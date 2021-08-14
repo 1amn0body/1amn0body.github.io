@@ -6,9 +6,10 @@
 @media screen {
     @import "scss/general.scss";
 
-    @media (max-width: 768px) {
-        @import "scss/home_screen_media.scss";
-    }
+    /*@media (max-width: 768px) {*/
+    @import "scss/home_screen_media.scss";
+    /*}*/
+
     @media (min-width: 769px) {
         @import "scss/home_screen.scss";
     }

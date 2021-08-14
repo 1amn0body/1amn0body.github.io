@@ -4,7 +4,7 @@
 
 html {
     background-color: $background;
-    font-family: "Dosis", serif;
+    font-family: 'Dosis', sans-serif;
     color: $text;
     hyphens: auto;
 
@@ -20,6 +20,7 @@ body {
     height: 100%;
 
     display: grid;
+    grid-template-rows: 0fr 0fr;
 }
 
 header,
@@ -32,5 +33,17 @@ footer {
 }
 
 nav {
-    background-color: $nav-background;
+    background-color: $background-secondary;
+}
+
+header h1 {
+    text-decoration: underline;
+}
+
+pre {
+    background-color: $background-secondary;
+    padding: $gap / 3;
+
+    border-radius: $gap / 3;
+    border: $border-width solid $border-color;
 }
