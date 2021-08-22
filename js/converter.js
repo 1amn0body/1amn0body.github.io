@@ -160,9 +160,9 @@ class ConvertFiles {
       dom("head").append("<title>" + title + sitename + "</title>");
 
       if (dom("body").find("header").length) {
-        dom("header").append("<h1>" + title + "</h1>");
+        dom("header").append(title);
       } else {
-        const headerElement = "<header><h1>" + title + "</h1></header>";
+        const headerElement = "<header>" + title + "</header>";
         const body = dom("body");
 
         if (body.find("nav").length) {
@@ -217,7 +217,7 @@ class ConvertFiles {
     for (const key in this.navItems) {
       const val = this.navItems[key].toString().trim().replace(/\\/g, "/");
 
-      nav("ul").append("<li><a href='" + val + "'>" + key + "</a></li>");
+      nav("ul").append("<li><a href='/" + val + "'>" + key + "</a></li>");
     }
 
     return nav.html();
