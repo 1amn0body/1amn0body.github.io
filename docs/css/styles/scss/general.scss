@@ -4,7 +4,17 @@
 
 html {
     background-color: $background;
-    font-family: 'Dosis', sans-serif;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: $gap/3 0;
+        font-family: "Dosis", sans-serif;
+    }
+    font-family: "Montserrat", sans-serif;
     color: $text;
     hyphens: auto;
 
@@ -20,30 +30,64 @@ body {
     height: 100%;
 
     display: grid;
-    grid-template-rows: 0fr 0fr;
+    grid-template-rows: repeat(2, 0fr);
+    column-gap: $gap/2;
+
+    header,
+    nav,
+    main,
+    footer {
+        padding: $gap/3 $gap/2;
+    }
 }
 
 header,
 main,
 footer {
     a {
-        @include links($link, $link-active, $link-visited);
-        @include links_decor(text-decoration, none, underline, none);
+        @include select($link, $link-active, $link-visited, $link-visited-active);
+        @include decor(text-decoration, none, underline, none);
     }
 }
 
 nav {
     background-color: $background-secondary;
+    font-family: "Dosis", sans-serif;
+    font-size: larger;
+
+    a {
+        @include select($text, $text, $text, $text);
+        @include decor(text-decoration, none, none, none);
+
+        display: inline-block;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0 0 0 $gap/3;
+    }
+
+    li {
+        list-style-type: none;
+
+        cursor: pointer;
+    }
 }
 
-header h1 {
+header {
+    font-family: "Dosis", sans-serif;
+    font-weight: bold;
+    font-size: xx-large;
     text-decoration: underline;
 }
 
 pre {
     background-color: $background-secondary;
-    padding: $gap / 3;
+    padding: $gap/3;
 
-    border-radius: $gap / 3;
+    border-radius: $gap/3;
     border: $border-width solid $border-color;
 }

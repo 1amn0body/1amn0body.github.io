@@ -1,20 +1,26 @@
-@mixin links($color, $active, $visited) {
+@mixin select($color, $active, $visited, $visited-active) {
     color: $color;
-
-    &:visited {
-        color: $visited;
-    }
 
     &:hover,
     &:active,
     &:focus {
         color: $active;
     }
+
+    &:visited {
+        color: $visited;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: #{$visited-active};
+        }
+    }
 }
 
-@mixin links_decor($rule, $decor, $active, $visited) {
+@mixin decor($rule, $decor, $active, $visited) {
     #{$rule}: #{$decor};
-
+    
     &:visited {
         #{$rule}: #{$visited};
     }
